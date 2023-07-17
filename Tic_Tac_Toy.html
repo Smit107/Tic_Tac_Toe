@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic_Tac_Toy</title>
+    <link rel="stylesheet" href="Tic_Tac_Toy.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <td><input type="text" readonly value="" id="b1" onclick="get_data(this.id)"  class="i1"></td>
+            <td><input type="text" readonly value="" id="b2" onclick="get_data(this.id)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b3" onclick="get_data(this.id)" class="i1"></td>
+        </tr>       
+        <tr>
+            <td><input type="text" readonly value="" id="b4" onclick="get_data(this.id)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b5" onclick="get_data(this.id)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b6" onclick="get_data(this.id)" class="i1"></td>
+        </tr>
+        <tr>
+            <td><input type="text" readonly value="" id="b7" onclick="get_data(this.id)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b8" onclick="get_data(this.id)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b9" onclick="get_data(this.id)" class="i1"></td>
+        </tr>
+        <tr>
+            <td colspan="3"><div id="winner"></div></td>
+        </tr>
+        <tr>
+            <td colspan="3" id="reset_back"><button id="reset" onclick="reset()">Reset All</button></td>
+        </tr>
+    </table>
+
+    <script>
+        
+        var cnt=1;
+         function get_data(id){
+            if( document.getElementById('winner').innerText  == "")
+            {
+                if(cnt % 2 == 0){
+                    document.getElementById(id).value="O";
+                    document.getElementById(id).disabled=true;
+                }
+
+                else{
+                    document.getElementById(id).value="X";  
+                    document.getElementById(id).disabled=true;
+                }
+
+                if(!winner() && cnt == 9){
+                    document.getElementById('winner').innerText = 'Math Draw'
+                }
+
+                cnt++;
+            }
+        }
+        
+        function reset(){
+            for(var i = 1; i<=9 ; i++){
+                document.getElementById('b'+i).value = " ";
+                document.getElementById('b'+i).disabled = false;
+                document.getElementById('winner').innerText = " ";
+            }
+            cnt=1
+        }
+
+        function winner() {
+            var b1 = document.getElementById('b1').value ;
+            var b2 = document.getElementById('b2').value ;
+            var b3 = document.getElementById('b3').value ;
+            var b4 = document.getElementById('b4').value ;
+            var b5 = document.getElementById('b5').value ;
+            var b6 = document.getElementById('b6').value ;
+            var b7 = document.getElementById('b7').value ;
+            var b8 = document.getElementById('b8').value ;
+            var b9 = document.getElementById('b9').value ;
+            
+            
+
+            if (b1 == 'X' && b2 == 'X' && b3 == 'X' ||
+                b1 == 'X' && b4 == 'X' && b7 == 'X' ||  
+                b7 == 'X' && b8 == 'X' && b9 == 'X' || 
+                b3 == 'X' && b6 == 'X' && b9 == 'X' || 
+                b2 == 'X' && b5 == 'X' && b8 == 'X' || 
+                b4 == 'X' && b5 == 'X' && b6 == 'X' || 
+                b1 == 'X' && b5 == 'X' && b9 == 'X' || 
+                b3 == 'X' && b5 == 'X' && b7 == 'X' )
+                {
+                    document.getElementById('winner').innerText = "X is Winner";
+                }   
+                
+            if (b1 == 'O' && b2 == 'O' && b3 == 'O' ||
+                b1 == 'O' && b4 == 'O' && b7 == 'O' ||
+                b7 == 'O' && b8 == 'O' && b9 == 'O' ||
+                b3 == 'O' && b6 == 'O' && b9 == 'O' ||
+                b2 == 'O' && b5 == 'O' && b8 == 'O' ||
+                b4 == 'O' && b5 == 'O' && b6 == 'O' ||
+                b1 == 'O' && b5 == 'O' && b9 == 'O' ||
+                b3 == 'O' && b5 == 'O' && b7 == 'O' )
+                {   
+                    document.getElementById('winner').innerText = "O is Winner";
+                }
+        }
+
+    </script>
+
+</body>
+</html>

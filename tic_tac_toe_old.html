@@ -37,33 +37,35 @@
     var count=1;
     function deta(id)
     {
-                if (count %2 != 0) {
-                document.getElementById(id).innerHTML="0";
-                }
+        if(document.getElementById(id).innerText == '') {
+            if (count %2 != 0) {
+                document.getElementById(id).innerText="0";
+            }
                 
-                else{
-                    document.getElementById(id).innerHTML="X";
-                }
-                setTimeout((countz) => {
-                    if (winner()) {
-                        alert("Winner")
-                        reset();
-                    }   
+            else{
+                document.getElementById(id).innerText="X";
+            }
+            setTimeout((countz) => {
+                if (winner()) {
+                    alert("Winner is: " + document.getElementById(id).innerHTML)
+                    reset();
+                }   
 
-                    else if(countz == 9 && !winner()) {
-                        //document.write("match draw")
-                        alert("match draw");
-                        reset();
-                    }
-                         
-                },1,count); 
-                count++;
+                else if(countz == 9 && !winner()) {
+                    //document.write("match draw")
+                    alert("match draw", 'jay');
+                     reset();
+                }             
+            },1,count); 
+            count++;
+        }
+                
     }
     function reset(){
         for (var i = 1; i <= 9; i++) {
             document.getElementById('b'+i).innerHTML="";
             count=1;
-        }
+        }   
     }
     function winner() {
         if (condition('b1','b2','b3') ||  condition('b1','b4','b7') ||  condition('b7','b8','b9') ||  condition('b3','b6','b9') ||  condition('b1','b5','b9') ||  condition('b3','b5','b7') || condition('b2','b5','b8') ||  condition('b4','b5','b6'))  
