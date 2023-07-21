@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic_Tac_Toy_New</title>
+    <link rel="stylesheet" href="Tic_Tac_Toy_New.css">
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td colspan="3"><center>TIC_TAC_TOE<br>GAME</td></center>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <div id="trun">
+                    <div id="trun_x">Trun X</div>
+                    <div id="trun_o">Trun O</div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td><input type="text" readonly value="" id="b0" onclick="get_data(0)"  class="i1"></td>
+            <td><input type="text" readonly value="" id="b1" onclick="get_data(1)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b2" onclick="get_data(2)" class="i1"></td>
+        </tr>       
+        <tr>
+            <td><input type="text" readonly value="" id="b3" onclick="get_data(3)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b4" onclick="get_data(4)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b5" onclick="get_data(5)" class="i1"></td>
+        </tr>
+        <tr>
+            <td><input type="text" readonly value="" id="b6" onclick="get_data(6)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b7" onclick="get_data(7)" class="i1"></td>
+            <td><input type="text" readonly value="" id="b8" onclick="get_data(8)" class="i1"></td>
+        </tr>
+        <tr>
+            <td colspan="3"><div id="winner"></div></td>
+        </tr>
+        <tr>
+            <td colspan="3" id="reset_back"><button id="reset" onclick="reset()">Reset All</button></td>
+        </tr>
+    </table>
+
+    
+    <script src="Tic_Tac_Toy_New.js"></script>
+</body>
+</html>

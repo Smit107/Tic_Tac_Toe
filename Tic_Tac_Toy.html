@@ -48,7 +48,7 @@
                 }
 
                 if(!winner() && cnt == 9){
-                    document.getElementById('winner').innerText = 'Math Draw'
+                    document.getElementById('winner').innerText = 'Math Draw';
                 }
 
                 cnt++;
@@ -87,6 +87,7 @@
                 b3 == 'X' && b5 == 'X' && b7 == 'X' )
                 {
                     document.getElementById('winner').innerText = "X is Winner";
+                    return true;
                 }   
                 
             if (b1 == 'O' && b2 == 'O' && b3 == 'O' ||
@@ -99,6 +100,7 @@
                 b3 == 'O' && b5 == 'O' && b7 == 'O' )
                 {   
                     document.getElementById('winner').innerText = "O is Winner";
+                    return true;
                 }
         }
 

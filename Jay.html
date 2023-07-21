@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="game.css">
+</head>
+<body>
+	<div class="container">
+		
+		<table class="tbl">
+			<tr>
+				<td>
+					<input type="button" name="bingo" value="" onclick="press(1)" id="btn1">
+				</td>
+				<td>
+					<input type="button" name="bingo" value="" onclick="press(2)" id="btn2">
+				</td>
+				<td>
+					<input type="button" name="bingo" value="" onclick="press(3)" id="btn3">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" name="bingo" value="" onclick="press(4)" id="btn4">
+				</td>
+				<td>
+					<input type="button" name="bingo" value="" onclick="press(5)" id="btn5">
+				</td>
+				<td>
+					<input type="button" name="bingo" value="" onclick="press(6)" id="btn6">
+				</td>
+			</tr>
+			<tr>
+				<td>	
+					<input type="button" name="bingo" value="" onclick="press(7)" id="btn7">
+				</td>
+				<td>
+					<input type="button" name="bingo" value="" onclick="press(8)" id="btn8">
+				</td>
+				<td>
+					<input type="button" name="bingo" value="" onclick="press(9)" id="btn9">
+				</td>
+			</tr>
+
+		</table>
+
+
+	</div>
+		<center><h1  id="winner">WHO WIN MATCH</h1></center>
+		<center><button style="background-color: #11213a; color: #04baad; width: 150px; height: 30px; border-radius: 50px; margin-top: 10px;" onclick="reset()">RESTART</button> </center>
+
+
+		<script type="text/javascript">
+			var cnt=0;
+			var emptyPositions = [0,1,2,3,4,5,6,7,8];
+
+			function press(n){
+				document.getElementById("btn"+ n).value = "X";
+			 	document.getElementById("btn"+ n).disabled = true;
+			 	var indexToRemove = emptyPositions.findIndex(x => x === n-1);
+
+			 	if(indexToRemove > -1) {
+					emptyPositions.splice(indexToRemove, 1);
+			 	}
+
+			 	cnt++;
+			 	setTimeout(() => {
+					abc();
+			 	},1);
+			}
+			
+			function abc(){
+				var randomIndex = Math.floor(Math.random()*(emptyPositions.length - 1));
+				if(emptyPositions.length > 0) {
+					var position = emptyPositions[randomIndex];
+					document.getElementById("btn"+ (position + 1)).value = "O";
+			 		document.getElementById("btn"+ (position + 1)).disabled = true;
+					emptyPositions.splice(randomIndex, 1);
+					cnt++;
+				}
+			}
+
+			function reset(){   
+            	for(var i = 1; i<=9 ; i++){
+					document.getElementById('btn'+i).disabled = false;
+                	document.getElementById('btn'+i).value = " ";
+                	document.getElementById('winner').innerText = " ";
+            	}
+            	cnt=1
+        	}
+
+        function winner() {
+            var b1 = document.getElementById('btn1').value ;
+            var b2 = document.getElementById('btn2').value ;
+            var b3 = document.getElementById('btn3').value ;
+            var b4 = document.getElementById('btn4').value ;
+            var b5 = document.getElementById('btn5').value ;
+            var b6 = document.getElementById('btn6').value ;
+            var b7 = document.getElementById('btn7').value ;
+            var b8 = document.getElementById('btn8').value ;
+            var b9 = document.getElementById('btn9').value ;
+
+            if (b1 == 'X' && b2 == 'X' && b3 == 'X' ||
+                b1 == 'X' && b4 == 'X' && b7 == 'X' ||  
+                b7 == 'X' && b8 == 'X' && b9 == 'X' || 
+                b3 == 'X' && b6 == 'X' && b9 == 'X' || 
+                b2 == 'X' && b5 == 'X' && b8 == 'X' || 
+                b4 == 'X' && b5 == 'X' && b6 == 'X' || 
+                b1 == 'X' && b5 == 'X' && b9 == 'X' || 
+                b3 == 'X' && b5 == 'X' && b7 == 'X' )
+                {
+                    document.getElementById('winner').innerText = "X is Winner";
+                    return true;
+                }   
+                
+            if (b1 == 'O' && b2 == 'O' && b3 == 'O' ||
+                b1 == 'O' && b4 == 'O' && b7 == 'O' ||
+                b7 == 'O' && b8 == 'O' && b9 == 'O' ||
+                b3 == 'O' && b6 == 'O' && b9 == 'O' ||
+                b2 == 'O' && b5 == 'O' && b8 == 'O' ||  
+                b4 == 'O' && b5 == 'O' && b6 == 'O' ||
+                b1 == 'O' && b5 == 'O' && b9 == 'O' ||
+                b3 == 'O' && b5 == 'O' && b7 == 'O' )
+                {   
+                    document.getElementById('winner').innerText = "O is Winner";
+                    return true;
+                }
+        }
+			
+	</script>
+</body>
+</html>
