@@ -27,7 +27,7 @@ function get_data(n){
             document.getElementById('winner').innerText = "Match Draw";
         }
 
-        if(!winner()){
+        if(!winner() && cnt != 9){
             setTimeout(() => {
                 auto()
             }, 1000);
@@ -40,9 +40,9 @@ function get_data(n){
 }
         
 function auto() {
-    if(cnt<9){
+    if(cnt<10){
         while(true){
-                
+            a=Math.floor(Math.random()*9)
             if(arr[a] == ''){
                 
                 document.getElementById('b'+a).value='O';
